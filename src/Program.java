@@ -14,8 +14,12 @@ public class Program {
             try {
                 System.out.print("\nCuantas Zonas desea inicializar: ");
                 cantidadZonas = sc.nextInt();
-                if (cantidadZonas > 0)
+                if (cantidadZonas > 0) {
                     datoCorrecto = true;
+                    Inhundaciones miInundacion = new Inhundaciones();
+
+
+                }
                 else {
                     System.out.println("Error; Ingresa una cantidad valida de Zonas");
                 }
@@ -26,5 +30,7 @@ public class Program {
         }
         while (!datoCorrecto);
     }
+
+
 
 }
