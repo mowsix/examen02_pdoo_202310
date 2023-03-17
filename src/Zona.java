@@ -11,6 +11,8 @@ public abstract class Zona {
 
     protected boolean estaEnRiesgo=false;
 
+    protected String estadoDeRiesgo="";
+
     public Zona(){
         nivelDelMar=0;
         area=0;

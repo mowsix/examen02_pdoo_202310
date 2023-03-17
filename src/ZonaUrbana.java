@@ -8,6 +8,7 @@ public class ZonaUrbana extends Zona{
         this.totalHabitantes=totalHabitantes;
         this.zonaUbicacion=zonaUbicacion;
         this.zonaGeografia=zonaGeografia;
+        Riesgo();
     }
 
     @Override
@@ -24,13 +25,22 @@ public class ZonaUrbana extends Zona{
             estaEnRiesgo=true;
         }
 
+        if (estaEnRiesgo){
+            estadoDeRiesgo="Esta en Riesgo";
+        }else {
+            estadoDeRiesgo="NO esta en peligro";
+        }
+
     }
+
 
 
 
     public String toString(){
-        String info= String.format("Zona %s %s: Nivel del mar: %d mts, Area: %d km2, Total Habitantes: %d, Distancia Rios: %d mts",zonaUbicacion, zonaGeografia,nivelDelMar,area,totalHabitantes,distanciaRios);
+        String info= String.format("Zona %s %s: %s, Nivel del mar: %d mts, Area: %d km2, Total Habitantes: %d, Distancia Rios: %d mts",zonaUbicacion, zonaGeografia,estadoDeRiesgo,nivelDelMar,area,totalHabitantes,distanciaRios);
         return info;
     }
+
+
 
 }

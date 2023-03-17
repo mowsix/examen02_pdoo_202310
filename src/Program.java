@@ -36,12 +36,14 @@ public class Program {
         LasZonas misZonitas = new LasZonas(cantidadZonas);
 
 
+
         for (Zona i:
              misZonitas.lasZonas) {
             System.out.println(i);
         }
 
         System.out.println("Los porcentajes de zonas en riesgo segun su tipo fueron: \n");
+        misZonitas.ObtienePorcentajeZonasPorTipo(misZonitas.lasZonas);
 
 
 
