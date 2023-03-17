@@ -5,6 +5,12 @@ public abstract class Zona {
     protected int totalHabitantes;
     protected int distanciaRios;
 
+    protected String zonaUbicacion;
+
+    protected String zonaGeografia;
+
+    protected boolean estaEnRiesgo=false;
+
     public Zona(){
         nivelDelMar=0;
         area=0;
@@ -42,12 +48,6 @@ public abstract class Zona {
 
 
 
+    protected abstract void Riesgo();
 
-    protected abstract void TipoDeZona();
-
-    @Override
-    public String toString(){
-        String info= String.format("Zona: Nivel del mar: %d, Area: %d, Total Habitantes: %d, Distancia Rios: %d",nivelDelMar,area,totalHabitantes,distanciaRios);
-        return info;
-    }
 }

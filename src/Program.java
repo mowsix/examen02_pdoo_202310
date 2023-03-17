@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class Program {
                 cantidadZonas = sc.nextInt();
                 if (cantidadZonas > 0) {
                     datoCorrecto = true;
-                    Inhundaciones miInundacion = new Inhundaciones();
+
 
 
                 }
@@ -29,6 +30,23 @@ public class Program {
             }
         }
         while (!datoCorrecto);
+
+        System.out.println("Las Zonas Generadas Fueron:\n");
+
+        LasZonas misZonitas = new LasZonas(cantidadZonas);
+
+
+        for (Zona i:
+             misZonitas.lasZonas) {
+            System.out.println(i);
+        }
+
+        System.out.println("Los porcentajes de zonas en riesgo segun su tipo fueron: \n");
+
+
+
+
+
     }
 
 
