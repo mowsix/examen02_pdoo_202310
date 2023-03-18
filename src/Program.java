@@ -18,8 +18,6 @@ public class Program {
                 if (cantidadZonas > 0) {
                     datoCorrecto = true;
 
-
-
                 }
                 else {
                     System.out.println("Error; Ingresa una cantidad valida de Zonas");
@@ -32,24 +30,24 @@ public class Program {
         while (!datoCorrecto);
 
         System.out.println("Las Zonas Generadas Fueron:\n");
-
         LasZonas misZonitas = new LasZonas(cantidadZonas);
-
-
-
         for (Zona i:
              misZonitas.lasZonas) {
             System.out.println(i);
         }
 
-        System.out.println("Los porcentajes de zonas en riesgo segun su tipo fueron: \n");
+
+        System.out.println(" \nLos porcentajes de zonas en riesgo segun su tipo fueron: \n");
         misZonitas.ObtienePorcentajeZonasPorTipo(misZonitas.lasZonas);
+        for (String i:
+                misZonitas.porcentajesTipoZona) {
+            System.out.println(i);
+        }
 
-
-
-
-
+        System.out.println(" \nLos porcentajes de zonas en riesgo segun el tipo de inhundacion fue: \n");
     }
+
+
 
 
 

@@ -1,8 +1,10 @@
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
 public class LasZonas extends Zona{
-
+    //DecimalFormat df = new DecimalFormat("#.##");
     public LasZonas(){
     }
 
@@ -20,6 +22,8 @@ public class LasZonas extends Zona{
     protected String zonaGeografia;
 
     public Zona[] lasZonas;
+
+    public ArrayList<Zona> lasZonasEnRiesgo;
     public String[] porcentajesTipoZona;
 
     public Zona[] getLasZonas() {
@@ -64,24 +68,23 @@ public class LasZonas extends Zona{
                             laZonaUbicacion, laZonaGeografica);
                     break;
             }
-
         }
     }
 
     protected String[] ObtienePorcentajeZonasPorTipo(Zona[] lasZonas){
-        int contRiesgo=0;
-        int urbanaMontañosa=0;
-        int urbanaCostera=0;
-        int ruralMontañosa=0;
-        int ruralCostera=0;
-        int porcentajeUrbanaMontañosa=0;
-        int porcentajeUrbanaCostera=0;
-        int porcentajeRuralMontañosa=0;
-        int porcentajeRuralCostera=0;
+        double contRiesgo=0;
+        double urbanaMontañosa=0;
+        double urbanaCostera=0;
+        double ruralMontañosa=0;
+        double ruralCostera=0;
+        double porcentajeUrbanaMontañosa=0;
+        double porcentajeUrbanaCostera=0;
+        double porcentajeRuralMontañosa=0;
+        double porcentajeRuralCostera=0;
         for (Zona cadaZona:lasZonas) {
-            System.out.println(cadaZona.estadoDeRiesgo+"OEEEEEEEEEEEEEEEEE");
             if (Objects.equals(cadaZona.estadoDeRiesgo, "Esta en Riesgo")){
                 contRiesgo+=1;
+                lasZonasEnRiesgo.add(cadaZona);
                 if (Objects.equals(cadaZona.zonaUbicacion, "Rural") && Objects.equals(cadaZona.zonaGeografia, "Costera")){
                     ruralCostera+=1;
                 }
@@ -96,22 +99,34 @@ public class LasZonas extends Zona{
                 }
             }
         }
-        System.out.println(contRiesgo+"#######");
 
-        porcentajeRuralCostera=(contRiesgo/ruralCostera)*100;
-        porcentajeRuralMontañosa=(contRiesgo/ruralMontañosa)*100;
-        porcentajeUrbanaCostera=(contRiesgo/urbanaCostera)*100;
-        porcentajeUrbanaMontañosa=(contRiesgo/urbanaMontañosa)*100;
+
+        /*porcentajeRuralCostera=Double.parseDouble(df.format((ruralCostera/contRiesgo)*100));
+        porcentajeRuralMontañosa=Double.parseDouble(df.format((ruralMontañosa/contRiesgo)*100));
+        porcentajeUrbanaCostera=Double.parseDouble(df.format((urbanaCostera/contRiesgo)*100));
+        porcentajeUrbanaMontañosa=Double.parseDouble(df.format((urbanaMontañosa/contRiesgo)*100));*/
+
+        porcentajeRuralCostera=((ruralCostera/contRiesgo)*100);
+        porcentajeRuralMontañosa=((ruralMontañosa/contRiesgo)*100);
+        porcentajeUrbanaCostera=((urbanaCostera/contRiesgo)*100);
+        porcentajeUrbanaMontañosa=((urbanaMontañosa/contRiesgo)*100);
 
         porcentajesTipoZona=new String[] {
-                "Rural y Costera:"+porcentajeRuralCostera+"\n",
-                "Rural y Montañosa:"+porcentajeRuralMontañosa+"\n",
-                "Urbana y Costera:"+porcentajeUrbanaCostera+"\n",
-                "Urbana y Montañosa"+porcentajeUrbanaMontañosa+"\n"
+                "Rural y Costera: "+porcentajeRuralCostera+"%\n",
+                "Rural y Montañosa: "+porcentajeRuralMontañosa+"%\n",
+                "Urbana y Costera: "+porcentajeUrbanaCostera+"%\n",
+                "Urbana y Montañosa "+porcentajeUrbanaMontañosa+"%\n"
         };
-
-
         return porcentajesTipoZona;
     }
 
+
+
+
+    protected void ObtienePorcentajeRiesgosPorTipo(ArrayList<Zona> lasZonasEnRiesgo){
+
+        for (Zona cadaZona:lasZonasEnRiesgo) {
+
+        }
+    }
 }
