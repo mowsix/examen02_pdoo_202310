@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class ZonaRural extends Zona {
 
     public ZonaRural(int nivelDelMar, int area, int totalHabitantes, int distanciaRios, String zonaUbicacion, String zonaGeografia){
@@ -8,12 +10,14 @@ public class ZonaRural extends Zona {
         this.zonaUbicacion=zonaUbicacion;
         this.zonaGeografia=zonaGeografia;
         Riesgo();
+        TipoInundacion();
     }
 
 
 
     @Override
     protected void Riesgo() {
+        densidadPoblacional= (totalHabitantes/area);
 
         if (nivelDelMar<10){
             estaEnRiesgo=true;
@@ -29,15 +33,37 @@ public class ZonaRural extends Zona {
         }
     }
 
-    public void EvaluaTipoDeRiesgo(){
-        do {
-            
-        }while (estaEnRiesgo);
+    @Override
+    protected void TipoInundacion() {
+        if(estaEnRiesgo){
+
+            tipoDeRiesgo="";
+            InundacionUrbana=false;
+            if (distanciaRios<50 && zonaGeografia=="Montañosa"){
+                InundacionFluvial=true;
+            }
+            if (Objects.equals(zonaGeografia, "Costera")){
+                InundacionCostera=true;
+            }
+
+
+            if (InundacionFluvial){
+                tipoDeRiesgo+="Fluvial ";
+            }
+            if (InundacionCostera){
+                tipoDeRiesgo+="Costera ";
+            }
+
+        }else {
+            tipoDeRiesgo="No presenta ningun tipo de riesgo";
+        }
+
     }
 
 
+
     public String toString(){
-        String info= String.format("Zona %s %s: %s, Nivel del mar: %d mts, Area: %d km2, Total Habitantes: %d, Distancia Rios: %d mts",zonaUbicacion, zonaGeografia,estadoDeRiesgo,nivelDelMar,area,totalHabitantes,distanciaRios);
+        String info= String.format("Zona %s %s: %s, Nivel del mar: %d mts, Area: %.2f km2, Densidad Poblacional: %.2f, Distancia Rios: %d mts, %s",zonaUbicacion, zonaGeografia,estadoDeRiesgo,nivelDelMar,area,densidadPoblacional,distanciaRios,tipoDeRiesgo);
         return info;
     }
 }

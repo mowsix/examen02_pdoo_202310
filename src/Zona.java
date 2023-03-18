@@ -1,7 +1,7 @@
 public abstract class Zona {
 
     protected int nivelDelMar;
-    protected int area;
+    protected double area;
     protected int totalHabitantes;
     protected int distanciaRios;
 
@@ -12,6 +12,14 @@ public abstract class Zona {
     protected boolean estaEnRiesgo=false;
 
     protected String estadoDeRiesgo="";
+
+    protected double densidadPoblacional;
+
+    protected String tipoDeRiesgo;
+
+    protected boolean InundacionFluvial=false;
+    protected boolean InundacionUrbana=false;
+    protected boolean InundacionCostera=false;
 
     public Zona(){
         nivelDelMar=0;
@@ -27,7 +35,7 @@ public abstract class Zona {
         this.nivelDelMar = nivelDelMar;
     }
 
-    public int getArea() {
+    public double getArea() {
         return area;
     }
     public void setArea(int area) {
@@ -52,4 +60,8 @@ public abstract class Zona {
 
     protected abstract void Riesgo();
 
+    protected abstract void TipoInundacion();
+
 }
+
+

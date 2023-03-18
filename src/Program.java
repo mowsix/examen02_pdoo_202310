@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -30,7 +29,7 @@ public class Program {
         while (!datoCorrecto);
 
         System.out.println("Las Zonas Generadas Fueron:\n");
-        LasZonas misZonitas = new LasZonas(cantidadZonas);
+        Dagran misZonitas = new Dagran(cantidadZonas);
         for (Zona i:
              misZonitas.lasZonas) {
             System.out.println(i);
@@ -44,7 +43,13 @@ public class Program {
             System.out.println(i);
         }
 
-        System.out.println(" \nLos porcentajes de zonas en riesgo segun el tipo de inhundacion fue: \n");
+        System.out.println(" \nLos porcentajes de zonas en riesgo segun el tipo de inundacion fue: \n");
+        misZonitas.ObtienePorcentajeRiesgosPorTipo(misZonitas.lasZonas);
+        for (String i:
+                misZonitas.porcentajesRiesgoInundacion) {
+            System.out.println(i);
+        }
+
     }
 
 
